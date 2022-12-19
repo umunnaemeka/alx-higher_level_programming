@@ -1,6 +1,6 @@
 # Python Exceptions
 
-Project done during **Full Stack Software Engineering studies** at **Holberton School**. It aims to learn about exceptions, how to use them, how to use errors and how to raise them in **Python**.
+Project done during **Full Stack Software Engineering studies** at **ALX Software Engineering School**. It aims to learn about exceptions, how to use them, how to use errors and how to raise them in **Python**.
 ## Technologies
 * Python Scripts are written with Python 3.4.3
 * C files are compiled using `gcc 4.8.4`
