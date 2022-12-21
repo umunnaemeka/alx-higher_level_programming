@@ -1,44 +1,76 @@
 #!/usr/bin/python3
-"""A module containing a square"""
+"""Define classes for a singly-linked list."""
 
 
-class Square:
-    """A square class"""
+class Node:
+    """Represent a node in a singly-linked list."""
 
-    def __init__(self, size=0):
-        """initializes square
+    def __init__(self, data, next_node=None):
+        """Initialize a new Node.
         Args:
-            size (int): size of the square
+            data (int): The data of the new Node.
+            next_node (Node): The next node of the new Node.
         """
-
-        self.size = size
+        self.data = data
+        self.next_node = next_node
 
     @property
-    def size(self):
-        """Gets value of size
-        Returns:
-            size (int)
-        """
+    def data(self):
+        """Get/set the data of the Node."""
+        return (self.__data)
 
-        return self.__size
+    @data.setter
+    def data(self, value):
+        if not isinstance(value, int):
+            raise TypeError("data must be an integer")
+        self.__data = value
 
-    @size.setter
-    def size(self, value):
-        """ Change the value of size
+    @property
+    def next_node(self):
+        """Get/set the next_node of the Node."""
+        return (self.__next_node)
+
+    @next_node.setter
+    def next_node(self, value):
+        if not isinstance(value, Node) and value is not None:
+            raise TypeError("next_node must be a Node object")
+        self.__next_node = value
+
+
+class SinglyLinkedList:
+    """Represent a singly-linked list."""
+
+    def __init__(self):
+        """Initalize a new SinglyLinkedList."""
+        self.__head = None
+
+    def sorted_insert(self, value):
+        """Insert a new Node to the SinglyLinkedList.
+        The node is inserted into the list at the correct
+        ordered numerical position.
         Args:
-            value (int): new value of size
+            value (Node): The new Node to insert.
         """
+        new = Node(value)
+        if self.__head is None:
+            new.next_node = None
+            self.__head = new
+        elif self.__head.data > value:
+            new.next_node = self.__head
+            self.__head = new
+        else:
+            tmp = self.__head
+            while (tmp.next_node is not None and
+                    tmp.next_node.data < value):
+                tmp = tmp.next_node
+            new.next_node = tmp.next_node
+            tmp.next_node = new
 
-        if type(value) != int:
-            raise TypeError("size must be an integer")
-        elif value < 0:
-            raise ValueError("size must be >= 0")
-        self.__size = value
-
-    def area(self):
-        """ Calculates the area of a square
-        Returns:
-            area
-        """
-
-        return self.__size * self.__size
+    def __str__(self):
+        """Define the print() representation of a SinglyLinkedList."""
+        values = []
+        tmp = self.__head
+        while tmp is not None:
+            values.append(str(tmp.data))
+            tmp = tmp.next_node
+        return ('\n'.join(values))
