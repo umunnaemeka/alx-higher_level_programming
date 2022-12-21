@@ -1,60 +1,44 @@
 #!/usr/bin/python3
-"""Defines a class Square"""
+"""A module containing a square"""
 
 
-class Node:
-    def __init__(self, data, next_node=None):
-        self.data = data
-        self.next_node = next_node
+class Square:
+    """A square class"""
 
-    @property
-    def data(self):
-        return self.__data
+    def __init__(self, size=0):
+        """initializes square
+        Args:
+            size (int): size of the square
+        """
 
-    @data.setter
-    def data(self, value):
-        if not isinstance(value, int):
-            raise TypeError("data must be an integer")
-        self.__data = value
+        self.size = size
 
     @property
-    def next_node(self):
-        return self.__next_node
+    def size(self):
+        """Gets value of size
+        Returns:
+            size (int)
+        """
 
-    @next_node.setter
-    def next_node(self, value):
-        if not isinstance(value, Node) and value is not None:
-            raise TypeError("next_node must be a Node object")
-        self.__next_node = value
+        return self.__size
 
+    @size.setter
+    def size(self, value):
+        """ Change the value of size
+        Args:
+            value (int): new value of size
+        """
 
-class SinglyLinkedList:
-    def __str__(self):
-        rtn = ""
-        ptr = self.__head
+        if type(value) != int:
+            raise TypeError("size must be an integer")
+        elif value < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = value
 
-        while ptr is not None:
-            rtn += str(ptr.data)
-            if ptr.next_node is not None:
-                rtn += "\n"
-            ptr = ptr.next_node
+    def area(self):
+        """ Calculates the area of a square
+        Returns:
+            area
+        """
 
-        return rtn
-
-    def __init__(self):
-        self.__head = None
-
-    def sorted_insert(self, value):
-        ptr = self.__head
-
-        while ptr is not None:
-            if ptr.data > value:
-                break
-            ptr_prev = ptr
-            ptr = ptr.next_node
-
-        newNode = Node(value, ptr)
-        if ptr == self.__head:
-            self.__head = newNode
-        else:
-            ptr_prev.next_node = newNode
+        return self.__size * self.__size
