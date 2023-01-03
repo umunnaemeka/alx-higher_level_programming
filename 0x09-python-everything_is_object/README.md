@@ -30,7 +30,7 @@ All `.txt` files store the answers to the questions asked by Holberton staff.
 | `16-answer.txt` | Function would you use to print script |
 | `17-answer.txt` | Function would you use to print script |
 | `18-answer.txt` | Function would you use to print script |
-| `19-answer.txt` | Function def copy_list(l): that returns a copy of a list.|
+| `19-copy_list.py` | Function def copy_list(l): that returns a copy of a list.|
 | `20-answer.txt` | Function would you use to print a tuple? Answer with Yes or No.|
 | `21-answer.txt` | Function would you use to print a tuple? Answer with Yes or No.|
 | `22-answer.txt` | Function would you use to print a tuple? Answer with Yes or No.|
